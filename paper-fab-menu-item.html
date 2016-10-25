@@ -50,7 +50,7 @@ Custom property | Description | Default
       }
 
     </style>
-    <paper-fab id="icon" icon="{{icon}}" src="{{src}}" mini></paper-fab>
+    <paper-fab id="icon" icon="{{icon}}" src="{{src}}" disabled$="{{disabled}}" mini></paper-fab>
     <paper-tooltip id="tooltip" for="icon" position="left">{{tooltip}}</paper-tooltip>
 
   </template>
@@ -84,6 +84,11 @@ Custom property | Description | Default
         tooltip: {
           type: String,
           value: '',
+          notify: true
+        },
+        disabled:{
+          type:Boolean,
+          value:false,
           notify: true
         }
       },
