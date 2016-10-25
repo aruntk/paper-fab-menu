@@ -163,7 +163,7 @@
     </style>
 
     <div class="container" id="fam">
-      <paper-fab-menu-overlay id="overlay" with-backdrop={{overlay}} on-iron-overlay-opened="overlayOpenedChanged"
+      <paper-fab-menu-overlay id="overlay" with-backdrop={{overlay}} on-iron-overlay-opened="overlayOpened"
                               on-iron-overlay-closed="overlayOpenedChanged"></paper-fab-menu-overlay>
       <div class="items-flow">
         <div class="item-container">
@@ -278,7 +278,15 @@
         // set default icon
         this.$.trigger.icon = this.icon;
       },
-
+      overlayOpened: function (e) {
+         this._patchOverlay(e);
+         this.overlayOpenedChanged();
+      },
+      _patchOverlay:function (e) {
+         if (e.target.withBackdrop) {
+            e.target.parentNode.insertBefore(e.target.backdropElement, e.target);
+         }
+      },
       overlayOpenedChanged: function () {
 
         if (this.overlay) {
