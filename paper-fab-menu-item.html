@@ -50,7 +50,7 @@ Custom property | Description | Default
       }
 
     </style>
-    <paper-fab id="icon" icon="{{icon}}" src="{{src}}" disabled$="{{disabled}}" mini></paper-fab>
+    <paper-fab id="icon" icon="{{icon}}" src="{{src}}" disabled$="{{disabled}}" on-tap="_fabTapped" mini></paper-fab>
     <paper-tooltip id="tooltip" for="icon" position="left">{{tooltip}}</paper-tooltip>
 
   </template>
@@ -91,6 +91,9 @@ Custom property | Description | Default
           value:false,
           notify: true
         }
+      },
+      _fabTapped(e){
+        this.fire("fab-tapped",{event:e});
       },
       ready: function () {
         if ('ontouchend' in document) {
